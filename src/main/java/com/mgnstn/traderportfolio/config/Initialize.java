@@ -1,10 +1,17 @@
 package com.mgnstn.traderportfolio.config;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.mgnstn.traderportfolio.model.Market;
+import com.mgnstn.traderportfolio.model.Portfolio;
 import com.mgnstn.traderportfolio.model.Ticker;
+import com.mgnstn.traderportfolio.model.TickerHolding;
 import com.mgnstn.traderportfolio.repository.TickerRepository;
 
 import org.slf4j.Logger;
@@ -19,6 +26,7 @@ public class Initialize {
     private final Logger log = LoggerFactory.getLogger(Initialize.class);
     private @Autowired Market market;
     private @Autowired TickerRepository tickerRepository;
+    private @Autowired Portfolio portfolio;
 
     @Bean
     CommandLineRunner initApp() {
@@ -40,6 +48,22 @@ public class Initialize {
             });
             market.setTickers(tickers);
             market.openMarket();
+            Path path = Path.of("files/portfolio.csv");
+
+            try (BufferedReader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+                String line = reader.readLine();
+                List<TickerHolding> tickerHoldings = new ArrayList<>();
+                while (line != null) {
+                    if (!line.matches("^#.*$")) {
+                        String[] parts = line.split(",");
+                        tickerHoldings.add(new TickerHolding(parts[0], Integer.parseInt(parts[1])));
+                    }
+                    line = reader.readLine();
+                }
+                portfolio.setHoldings(tickerHoldings);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         };
     }
 }

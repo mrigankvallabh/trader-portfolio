@@ -10,16 +10,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class Portfolio {
     private List<TickerHolding> holdings = new ArrayList<>();
-    private List<String> tickerList = new ArrayList<>();
     private BigDecimal totalValue = BigDecimal.ZERO;
-    public Portfolio() {
-        holdings.add(new TickerHolding("MGQ", 10000));
-        holdings.add(new TickerHolding("INAKU", 12000));
+    public Portfolio() { }
 
-        for (TickerHolding t : holdings) {
-            tickerList.add(t.getTickerId());
-            totalValue.add(t.getValue());
-        }
+    public void setHoldings(List<TickerHolding> holdings) {
+        this.holdings = holdings;
     }
 
     public List<TickerHolding> getHoldings() {
