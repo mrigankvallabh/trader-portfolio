@@ -1,6 +1,7 @@
 package com.mgnstn.traderportfolio.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +28,11 @@ public class Portfolio {
 
     public void setTotalValue(BigDecimal totalValue) {
         this.totalValue = totalValue;
+    }
+
+    @Override
+    public String toString() {
+        return "Portfolio [holdings=" + holdings + ", totalValue=" + totalValue.setScale(4, RoundingMode.HALF_UP) + "]";
     }
 
 }

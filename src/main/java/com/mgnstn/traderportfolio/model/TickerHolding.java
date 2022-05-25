@@ -1,6 +1,7 @@
 package com.mgnstn.traderportfolio.model;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 import org.springframework.stereotype.Component;
 
@@ -35,6 +36,11 @@ public class TickerHolding {
 
     public void setValue(BigDecimal value) {
         this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "TickerHolding [tickerId=" + tickerId + ", noOfContracts=" + noOfContracts + ", value=" + value.setScale(4, RoundingMode.HALF_UP) + "]";
     }
 
 }

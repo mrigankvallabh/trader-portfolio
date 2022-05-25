@@ -17,7 +17,7 @@ function disconnect() {
 }
 
 function sendName() {
-    stompClient.send("/app/stock-prices", {}, JSON.stringify({'name': 'Mrigank'}));
+    stompClient.send("/app/portfolio-nav", {});
 }
 
 $(function () {
