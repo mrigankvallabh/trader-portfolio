@@ -39,7 +39,7 @@ public class PortfolioController {
                 writer.write(t.getTickerId() + "," + t.getNoOfContracts() + "," + t.getValue().setScale(4, RoundingMode.HALF_UP));;
                 writer.newLine();
             }
-            writer.write("TotalValue," + portfolio.getTotalValue().setScale(4, RoundingMode.HALF_UP));
+            writer.write("TotalValue,," + portfolio.getTotalValue().setScale(4, RoundingMode.HALF_UP));
         } catch (Exception e) {
             e.printStackTrace();
         }
