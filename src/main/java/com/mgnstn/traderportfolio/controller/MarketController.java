@@ -22,7 +22,7 @@ public class MarketController {
     
     @GetMapping("/tickers")
     @CrossOrigin(origins = "*")
-    public List<Ticker> getTickers(@RequestParam(required = false, defaultValue = "") List<String> tickerIds) {
+    public List<Ticker> getTickers(@RequestParam(value = "tickerIds",required = false, defaultValue = "") List<String> tickerIds) {
         log.info("Fetching tickerIds {}" , tickerIds);
         return marketService.getTickers(tickerIds);
     }
