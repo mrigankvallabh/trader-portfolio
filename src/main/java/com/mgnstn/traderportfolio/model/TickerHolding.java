@@ -5,6 +5,9 @@ import java.math.RoundingMode;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * TickerHolding class represents Each Stock held by the Trader
+ */
 @Component
 public class TickerHolding {
     private String tickerId;

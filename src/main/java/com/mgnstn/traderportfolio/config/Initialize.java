@@ -21,6 +21,13 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * Initialize Class
+ * Initializes Database with Tickers
+ * Create the Market with all those Tickers
+ * Starts the Market so that Tickers are frequently updated between 0.5s to 2.0s
+ * Creates the Trader Portfolio Object after loading it from the trader input file
+ */
 @Configuration
 public class Initialize {
     private final Logger log = LoggerFactory.getLogger(Initialize.class);

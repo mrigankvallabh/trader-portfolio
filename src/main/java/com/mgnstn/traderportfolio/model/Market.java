@@ -59,6 +59,9 @@ public class Market {
         }
     }
 
+    /**
+     * The openMarket function starts a new TickerThread for each Stock.
+     */
     public void openMarket() {
         ExecutorService executor = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
         try {
@@ -70,6 +73,11 @@ public class Market {
         executor.shutdown();
     }
 
+    /**
+     * TickerThread
+     * This is a private inner class used by Market class and it is Thread that updates the Stock 
+     * randomly between 0.5s to 2.0s
+     */
     private class TickerThread implements Runnable {
         private final Ticker ticker;
         private final Random rg = new Random();

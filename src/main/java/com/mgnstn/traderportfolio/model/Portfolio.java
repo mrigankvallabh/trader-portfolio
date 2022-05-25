@@ -8,6 +8,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+/**
+ * Portfolio Class represents the Trader Ticker Holding and its NAV
+ */
 @Component
 public class Portfolio {
     private List<TickerHolding> holdings = new ArrayList<>();

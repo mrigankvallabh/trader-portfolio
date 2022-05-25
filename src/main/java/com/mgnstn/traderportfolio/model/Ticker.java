@@ -148,6 +148,10 @@ public class Ticker {
                 + expirationInMonths + "]";
     }
 
+    /**
+     * Update price according discrete time geometric Brownian motion
+     * @param dt
+     */
     public void updatePrice(double dt) {
         NormalDistribution snd = new NormalDistribution(0, 1);
         double d = dt / 7257600.0;
@@ -156,6 +160,10 @@ public class Ticker {
         price = price.multiply(BigDecimal.valueOf(1 + dp));
     }
 
+    /**
+     * Calculate European Call Option Price
+     * @return
+     */
     private BigDecimal getCallOptionPrice() {
         NormalDistribution snd = new NormalDistribution(0, 1);
         double d1 = d1();
@@ -174,6 +182,10 @@ public class Ticker {
         ;
     }
 
+    /**
+     * Calculate European Put Option Price
+     * @return
+     */
     private BigDecimal getPutOptionPrice() {
         NormalDistribution snd = new NormalDistribution(0, 1);
         double d1 = d1();
